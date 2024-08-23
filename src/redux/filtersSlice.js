@@ -4,11 +4,11 @@ const INITIAL_STATE = {
 
 export const filtersSlice = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case "filters/value": 
-    return {
-      ...state,
-      name: [...state, action.payload]
-    }
+    case "filters/value":
+      return {
+        ...state,
+        name: action.payload,
+      };
     default:
       return state;
   }
