@@ -2,15 +2,17 @@ import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
 // import contactsList from "../../contacts.json";
-import { useState } from "react";
+// import { useState } from "react";
 import { nanoid } from "nanoid";
 import css from "./App.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact, deleteContact } from "../redux/contactsSlice";
+import { changeFilter } from "../redux/filtersSlice";
 
 const App = () => {
   const dispatch = useDispatch();
   const selectContacts = useSelector((state) => state.contacts.items);
+  const searchValue = useSelector((state) => state.filters.name);
 
   // const [contacts, setContacts] = useState(() => {
   //   const savedContacts = window.localStorage.getItem("saved-contacts");
@@ -21,9 +23,11 @@ const App = () => {
   //     contacts;
   // });
 
-  const [searchValue, setSearchValue] = useState("");
+  // const [searchValue, setSearchValue] = useState("");
+
   const showValueSearch = (event) => {
-    setSearchValue(event.target.value);
+    dispatch(changeFilter(event.target.value));
+    // setSearchValue(event.target.value);
   };
 
   const visibleContact = selectContacts.filter((contact) =>

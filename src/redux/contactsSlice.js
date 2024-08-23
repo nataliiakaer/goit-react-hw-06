@@ -2,7 +2,7 @@ const INITIAL_STATE = {
   items: [],
 };
 
-export const createSlice = (state = INITIAL_STATE, action) => {
+export const contactsSlice = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case "contacts/add": {
       return {
